@@ -1,0 +1,818 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Body Setup */
+body.page {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f0f1a;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Aurora Background Blobs */
+.aurora-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.6;
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.blob1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(45deg, #00ff88, #00ccff);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.blob2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, #ff0088, #8800ff);
+  top: 50%;
+  right: -150px;
+  animation-delay: -5s;
+}
+
+.blob3 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(45deg, #ffaa00, #ff0088);
+  bottom: -175px;
+  left: 50%;
+  animation-delay: -10s;
+}
+
+.blob4 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(45deg, #00ffaa, #0088ff);
+  top: 20%;
+  left: 10%;
+  animation-delay: -15s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(270deg);
+  }
+}
+
+/* Main Container with Glassmorphism */
+.main-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* Two Column Layout Container */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Penting agar kolom sejajar di atas */
+  gap: 40px; /* Jarak antar kolom */
+  padding: 0;
+  width: 100%;
+  max-width: 1200px; /* Batas lebar maksimal */
+  margin: 0 auto;
+}
+
+/* Form Column - Kolom Kiri */
+.form-column {
+  flex: 2; /* Kolom form lebih lebar */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Jarak antar elemen di dalam kolom form */
+  min-width: 0; /* Penting untuk flexbox */
+}
+
+/* Info Column - Kolom Kanan */
+.info-column {
+  flex: 1; /* Kolom info lebih ramping */
+  position: sticky; /* Membuat kolom info tetap terlihat saat scroll */
+  top: 40px; /* Jarak dari atas saat sticky */
+  min-width: 0; /* Penting untuk flexbox */
+  height: fit-content; /* Tinggi sesuai konten */
+}
+
+.container {
+  background: rgba(25, 25, 40, 0.5);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Title */
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #f0f0f0, #a0a0a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
+  line-height: 1.2;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* QRIS Input Section */
+.qris-input {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.qris-input__upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.qris-input__upload:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.upload-icon {
+  width: clamp(20px, 4vw, 24px);
+  height: clamp(20px, 4vw, 24px);
+  color: #00ff88;
+  flex-shrink: 0;
+}
+
+.qris-input__canvas {
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+  height: auto;
+}
+
+/* Merchant Info */
+.merchant-info {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Hide merchant info and QRIS result by default */
+#merchant-info-wrapper,
+#qris-result-wrapper {
+  display: none;
+}
+
+.merchant-info__title {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #00ff88;
+}
+
+.merchant-info__text {
+  margin-bottom: 8px;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+/* Form Styles */
+.form {
+  margin-bottom: 30px;
+}
+
+.form__group {
+  margin-bottom: 24px;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #f0f0f0;
+}
+
+.form__input,
+.form__select {
+  width: 100%;
+  padding: clamp(14px, 3vw, 16px) clamp(16px, 4vw, 20px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 44px; /* Better touch target for mobile */
+}
+
+.form__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form__input:focus,
+.form__select:focus {
+  outline: none;
+  border-color: #00ff88;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+.form__select option {
+  background: #1a1a2e;
+  color: #ffffff;
+  padding: 8px;
+}
+
+/* Service Fee Options */
+.service-fee {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Submit Button */
+.form__submit {
+  width: 100%;
+  padding: clamp(16px, 3.5vw, 18px) clamp(20px, 4.5vw, 24px);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  min-height: 48px; /* Better touch target for mobile */
+}
+
+.form__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.form__submit:active {
+  transform: translateY(0);
+}
+
+.submit-icon {
+  width: clamp(18px, 3.5vw, 20px);
+  height: clamp(18px, 3.5vw, 20px);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Result Section */
+.result {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.result__title {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #00ff88;
+}
+
+.result__qrcode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.result__qrcode img {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+  height: auto;
+}
+
+/* About Section */
+.about {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.about__title {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #00ff88;
+}
+
+.about__description {
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  word-wrap: break-word;
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.about__features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__feature {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.about__feature:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.feature__title {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #00ff88;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feature__title::before {
+  content: '✓';
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.feature__text {
+  font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  word-wrap: break-word;
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+  .main-container {
+    padding: 15px;
+  }
+  
+  .page-container {
+    gap: 30px;
+    max-width: 900px;
+  }
+  
+  .container {
+    padding: 35px 30px;
+  }
+  
+  .aurora-blob {
+    filter: blur(120px);
+  }
+  
+  .blob1, .blob2, .blob3, .blob4 {
+    width: clamp(200px, 30vw, 400px);
+    height: clamp(200px, 30vw, 400px);
+  }
+}
+
+/* Responsive Design - Mobile Large (Breakpoint untuk 2 kolom ke 1 kolom) */
+@media (max-width: 992px) {
+  .page-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 30px;
+    max-width: 600px;
+  }
+
+  .form-column,
+  .info-column {
+    flex: 1 1 100%; /* Kolom mengambil lebar penuh */
+    width: 100%;
+    max-width: 600px; /* Batas lebar agar tidak terlalu lebar di tablet */
+  }
+
+  .info-column {
+    position: static; /* Hapus 'sticky' di mobile */
+    top: auto;
+  }
+  
+  .main-container {
+    padding: 15px;
+  }
+}
+
+/* Responsive Design - Mobile Large */
+@media (max-width: 768px) {
+  body.page {
+    padding: 15px 0;
+    overflow-x: hidden;
+  }
+  
+  .main-container {
+    padding: 10px;
+  }
+  
+  .page-container {
+    gap: 25px;
+  }
+  
+  .container {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+  
+  .title {
+    margin-bottom: 30px;
+    line-height: 1.3;
+  }
+  
+  .qris-input__upload {
+    padding: 18px 20px;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .form__input,
+  .form__select {
+    padding: 16px 18px;
+  }
+  
+  .form__submit {
+    padding: 18px 20px;
+  }
+  
+  .aurora-blob {
+    filter: blur(100px);
+    opacity: 0.4;
+  }
+  
+  .blob1, .blob2, .blob3, .blob4 {
+    width: clamp(150px, 25vw, 300px);
+    height: clamp(150px, 25vw, 300px);
+  }
+}
+
+/* Responsive Design - Mobile Small */
+@media (max-width: 480px) {
+  body.page {
+    padding: 10px 0;
+  }
+  
+  .main-container {
+    padding: 5px;
+  }
+  
+  .container {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  
+  .qris-input__upload {
+    padding: 16px 18px;
+    font-size: 0.9rem;
+    max-width: 280px;
+  }
+  
+  .upload-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .form__input,
+  .form__select {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .form__submit {
+    padding: 16px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .submit-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .merchant-info,
+  .result,
+  .about {
+    padding: 20px 15px;
+    margin-bottom: 25px;
+  }
+  
+  .aurora-blob {
+    filter: blur(80px);
+    opacity: 0.3;
+  }
+  
+  .blob1, .blob2, .blob3, .blob4 {
+    width: clamp(120px, 20vw, 250px);
+    height: clamp(120px, 20vw, 250px);
+  }
+}
+
+/* Responsive Design - Very Small Mobile */
+@media (max-width: 360px) {
+  .container {
+    padding: 18px 12px;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .qris-input__upload {
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    max-width: 260px;
+  }
+  
+  .form__input,
+  .form__select {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .form__submit {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .merchant-info,
+  .result,
+  .about {
+    padding: 18px 12px;
+    margin-bottom: 20px;
+  }
+}
+
+/* High DPI and Zoom Support */
+@media (min-resolution: 2dppx) {
+  .aurora-blob {
+    filter: blur(200px);
+  }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  body.page {
+    padding: 10px 0;
+  }
+  
+  .main-container {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 20px 25px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .qris-input__upload {
+    padding: 14px 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form__group {
+    margin-bottom: 18px;
+  }
+  
+  .merchant-info,
+  .result,
+  .about {
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Focus Visible for Accessibility */
+.form__input:focus-visible,
+.form__select:focus-visible,
+.form__submit:focus-visible {
+  outline: 2px solid #00ff88;
+  outline-offset: 2px;
+}
+
+/* Animation for form elements */
+.form__group {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.form__group:nth-child(1) { animation-delay: 0.1s; }
+.form__group:nth-child(2) { animation-delay: 0.2s; }
+.form__group:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .qris-input__upload:hover {
+    transform: none;
+  }
+  
+  .form__submit:hover {
+    transform: none;
+  }
+  
+  .form__input,
+  .form__select,
+  .form__submit {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Cursor Splash Effect */
+#cursor-splash {
+  /* Posisi & Ukuran Awal */
+  position: fixed; /* Tetap di layar bahkan saat scroll */
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+
+  /* Tampilan Glowing & Blur */
+  background: radial-gradient(circle, rgba(90, 255, 150, 0.8), transparent);
+  border-radius: 50%; /* Membuatnya bulat */
+  filter: blur(15px); /* Efek blur yang membuatnya pendar */
+
+  /* Penting agar tidak menghalangi klik! */
+  pointer-events: none; 
+
+  /* Transform untuk menengahkan blob tepat di kursor */
+  transform: translate(-50%, -50%); 
+
+  /* Animasi transisi agar pergerakan lebih halus */
+  transition: top 0.1s ease-out, left 0.1s ease-out;
+
+  /* Pastikan berada di atas konten lain */
+  z-index: 9999;
+  
+  /* Efek tambahan untuk membuat lebih menarik */
+  box-shadow: 0 0 20px rgba(90, 255, 150, 0.6);
+  mix-blend-mode: screen;
+}
+
+/* Responsive cursor splash untuk mobile */
+@media (max-width: 768px) {
+  #cursor-splash {
+    width: 25px;
+    height: 25px;
+    filter: blur(12px);
+    transition: top 0.15s ease-out, left 0.15s ease-out;
+  }
+}
+
+@media (max-width: 480px) {
+  #cursor-splash {
+    width: 20px;
+    height: 20px;
+    filter: blur(10px);
+    transition: top 0.2s ease-out, left 0.2s ease-out;
+  }
+}
